@@ -12,12 +12,14 @@ public class YellowBook {
         //create admin
         AdminRights admin = new AdminRights(examplePersons);
 
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to yellowbook");
 
         Boolean userIsAdmin = false;
         boolean loginToAdminLoop = true;
         while (loginToAdminLoop) {
+
             //Admin login
             System.out.println("Do you want to login to admin? yes/no ");
             String loginToAdmin = scanner.next();
@@ -31,13 +33,14 @@ public class YellowBook {
                     System.out.println("Wrong password.");
                 }
             } else if (Objects.equals(loginToAdmin, "no")) { //ends loginToAdmin loop if user types no
+
                 loginToAdminLoop = false;
             }
         }
 
-        Integer userMenuChoice = 0;
 
-        while (userMenuChoice != 2) {
+        boolean showMenuLoop = true;
+        while(showMenuLoop) {
             //Visible menu
             System.out.println("----Menu----");
             System.out.println("1: Search");
@@ -48,7 +51,8 @@ public class YellowBook {
                 System.out.println("5: Display all persons");
             }
 
-            userMenuChoice = scanner.nextInt();
+            Integer userMenuChoice = scanner.nextInt();
+
 
             switch (userMenuChoice) {
                 case 1: {
@@ -58,6 +62,8 @@ public class YellowBook {
                 }
                 case 2: {
                     System.out.println("Quitting program");
+
+                    showMenuLoop = false;
                     break;
                 }
                 case 3: {
@@ -65,6 +71,7 @@ public class YellowBook {
                         //function add person
                         admin.addNewPerson();
                         admin.displayContacts();
+
 
                     } else {
                         System.out.println("Something went wrong.");
@@ -147,4 +154,5 @@ public class YellowBook {
 
             return examplePersons;
         }
+
 }
