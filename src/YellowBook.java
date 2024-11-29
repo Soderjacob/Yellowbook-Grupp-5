@@ -32,44 +32,51 @@ public class YellowBook {
             }
         }
 
-        //Visible menu
-        System.out.println("----Menu----");
-        System.out.println("1: Search");
-        System.out.println("2: Quit");
-        if(userIsAdmin){
-            System.out.println("3: Add person");
-            System.out.println("4: Edit person");
-        }
-
-        Integer userMenuChoice = scanner.nextInt();
-
-        switch (userMenuChoice){
-            case 1:{
-                //searchFunction
-
-                break;
+        boolean showMenuLoop = true;
+        while(showMenuLoop) {
+            //Visible menu
+            System.out.println("----Menu----");
+            System.out.println("1: Search");
+            System.out.println("2: Quit");
+            if (userIsAdmin) {
+                System.out.println("3: Add person");
+                System.out.println("4: Edit person");
             }
-            case 2:{
-                System.out.println("Quitting program");
-                break;
-            }
-            case 3:{
-                if(userIsAdmin){
-                    //function add person
 
-                }else{
-                    System.out.println("Something went wrong.");
+            Integer userMenuChoice = scanner.nextInt();
+
+            switch (userMenuChoice) {
+                case 1: {
+                    //searchFunction
+
+                    break;
                 }
-                break;
-            }
-            case 4:{
-                if(userIsAdmin){
-                    //function edit person
-
-                }else{
-                    System.out.println("Something went wrong.");
+                case 2: {
+                    System.out.println("Quitting program");
+                    showMenuLoop = false;
+                    break;
                 }
-                break;
+                case 3: {
+                    if (userIsAdmin) {
+                        //function add person
+
+                    } else {
+                        System.out.println("Something went wrong.");
+                    }
+                    break;
+                }
+                case 4: {
+                    if (userIsAdmin) {
+                        //function edit person
+
+                    } else {
+                        System.out.println("Something went wrong.");
+                    }
+                    break;
+                }
+                default:
+                    System.out.println("Something went wrong.");
+                    break;
             }
         }
     }
