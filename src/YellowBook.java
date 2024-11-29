@@ -9,12 +9,17 @@ public class YellowBook {
         //Example persons
         ArrayList<Person> examplePersons = generateExamplePersons();
 
+        //create admin
+        AdminRights admin = new AdminRights(examplePersons);
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to yellowbook");
 
         Boolean userIsAdmin = false;
         boolean loginToAdminLoop = true;
-        while(loginToAdminLoop) {
+        while (loginToAdminLoop) {
+
             //Admin login
             System.out.println("Do you want to login to admin? yes/no ");
             String loginToAdmin = scanner.next();
@@ -27,10 +32,12 @@ public class YellowBook {
                 } else {
                     System.out.println("Wrong password.");
                 }
-            }else if(Objects.equals(loginToAdmin, "no")){ //ends loginToAdmin loop if user types no
+            } else if (Objects.equals(loginToAdmin, "no")) { //ends loginToAdmin loop if user types no
+
                 loginToAdminLoop = false;
             }
         }
+
 
         boolean showMenuLoop = true;
         while(showMenuLoop) {
@@ -41,9 +48,11 @@ public class YellowBook {
             if (userIsAdmin) {
                 System.out.println("3: Add person");
                 System.out.println("4: Edit person");
+                System.out.println("5: Display all persons");
             }
 
             Integer userMenuChoice = scanner.nextInt();
+
 
             switch (userMenuChoice) {
                 case 1: {
@@ -53,12 +62,16 @@ public class YellowBook {
                 }
                 case 2: {
                     System.out.println("Quitting program");
+
                     showMenuLoop = false;
                     break;
                 }
                 case 3: {
                     if (userIsAdmin) {
                         //function add person
+                        admin.addNewPerson();
+                        admin.displayContacts();
+
 
                     } else {
                         System.out.println("Something went wrong.");
@@ -74,64 +87,72 @@ public class YellowBook {
                     }
                     break;
                 }
-                default:
-                    System.out.println("Something went wrong.");
+                case 5: {
+                    if (userIsAdmin) {
+                        //function display all
+                        admin.displayContacts();
+                    } else {
+                        System.out.println("Something went wrong.");
+                    }
                     break;
+                }
+
             }
         }
     }
-    public static ArrayList<Person> generateExamplePersons(){
-        //Example persons
-        ArrayList<Person> examplePersons = new ArrayList<Person>();
+        public static ArrayList<Person> generateExamplePersons () {
+            //Example persons
+            ArrayList<Person> examplePersons = new ArrayList<Person>();
 
-        Address address1 = new Address("Storvägen 13", "Uppsala", "75644");
-        Address address2 = new Address("Lillgatan 3", "Stockholm", "12345");
-        Address address3 = new Address("Götgatan 118", "Jönköping", "54321");
-        Address address4 = new Address("Pinngatan", "Umeå", "11337");
-        Address address5 = new Address("Leafstreet", "London", "87878");
-        Person person1 = new Person(
-                "Tratt",
-                "Trattson",
-                45,
-                new String[] {"0701234567"},
-                address1
-        );
-        Person person2 = new Person(
-                "Olof",
-                "Palme",
-                45,
-                new String[] {"07099889"},
-                address1
-        );
-        Person person3 = new Person(
-                "Margareta",
-                "Andersson",
-                45,
-                new String[] {"070444455"},
-                address1
-        );
-        Person person4 = new Person(
-                "Johnny",
-                "Depp",
-                45,
-                new String[] {"07011122"},
-                address1
-        );
-        Person person5 = new Person(
-                "Morgan",
-                "Alling",
-                45,
-                new String[] {"072133737"},
-                address1
-        );
+            Address address1 = new Address("Storvägen 13", "Uppsala", "75644");
+            Address address2 = new Address("Lillgatan 3", "Stockholm", "12345");
+            Address address3 = new Address("Götgatan 118", "Jönköping", "54321");
+            Address address4 = new Address("Pinngatan", "Umeå", "11337");
+            Address address5 = new Address("Leafstreet", "London", "87878");
+            Person person1 = new Person(
+                    "Tratt",
+                    "Trattson",
+                    45,
+                    new String[]{"0701234567"},
+                    address1
+            );
+            Person person2 = new Person(
+                    "Olof",
+                    "Palme",
+                    45,
+                    new String[]{"07099889"},
+                    address1
+            );
+            Person person3 = new Person(
+                    "Margareta",
+                    "Andersson",
+                    45,
+                    new String[]{"070444455"},
+                    address1
+            );
+            Person person4 = new Person(
+                    "Johnny",
+                    "Depp",
+                    45,
+                    new String[]{"07011122"},
+                    address1
+            );
+            Person person5 = new Person(
+                    "Morgan",
+                    "Alling",
+                    45,
+                    new String[]{"072133737"},
+                    address1
+            );
 
 
-        examplePersons.add(person1);
-        examplePersons.add(person2);
-        examplePersons.add(person3);
-        examplePersons.add(person4);
-        examplePersons.add(person5);
+            examplePersons.add(person1);
+            examplePersons.add(person2);
+            examplePersons.add(person3);
+            examplePersons.add(person4);
+            examplePersons.add(person5);
 
-        return examplePersons;
-    }
+            return examplePersons;
+        }
+
 }
