@@ -104,11 +104,11 @@ public class YellowBook {
             //Example persons
             ArrayList<Person> examplePersons = new ArrayList<Person>();
 
-            Address address1 = new Address("Storvägen 13", "Uppsala", "75644");
-            Address address2 = new Address("Lillgatan 3", "Stockholm", "12345");
-            Address address3 = new Address("Götgatan 118", "Jönköping", "54321");
-            Address address4 = new Address("Pinngatan", "Umeå", "11337");
-            Address address5 = new Address("Leafstreet", "London", "87878");
+            Address address1 = new Address("Storvägen 13", "Uppsala", "75644", "6798");
+            Address address2 = new Address("Lillgatan 3", "Stockholm", "12345", "8390");
+            Address address3 = new Address("Götgatan 118", "Jönköping", "54321", "3385");
+            Address address4 = new Address("Pinngatan", "Umeå", "11337", "5687");
+            Address address5 = new Address("Leafstreet", "London", "87878", "2295");
             Person person1 = new Person(
                     "Tratt",
                     "Trattson",
@@ -121,28 +121,28 @@ public class YellowBook {
                     "Palme",
                     45,
                     new String[]{"07099889"},
-                    address1
+                    address2
             );
             Person person3 = new Person(
                     "Margareta",
                     "Andersson",
                     45,
                     new String[]{"070444455"},
-                    address1
+                    address3
             );
             Person person4 = new Person(
                     "Johnny",
                     "Depp",
                     45,
                     new String[]{"07011122"},
-                    address1
+                    address4
             );
             Person person5 = new Person(
                     "Morgan",
                     "Alling",
                     45,
                     new String[]{"072133737"},
-                    address1
+                    address5
             );
 
 

@@ -74,7 +74,10 @@ public class AdminRights {
             System.out.println("Ange postnummer:");
             String postalCode = scanner.nextLine();
 
-            Address address = new Address(street, city, postalCode);
+            System.out.println("Ange portkod:");
+            String doorCode = scanner.nextLine();
+
+            Address address = new Address(street, city, postalCode, doorCode);
             Person person = new Person(firstName, lastName, age, phoneNumbers, address);
             contacts.add(person);
         //}
