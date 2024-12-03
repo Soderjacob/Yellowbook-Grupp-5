@@ -39,7 +39,7 @@ public class AdminRights {
             System.out.print("Enter last name ( " + newPerson.lastName + " ) :");
             String lastName = newPerson.lastName;
             String lastName1 = scanner.nextLine();
-            if (!firstName1.isEmpty()) {
+            if (!lastName1.isEmpty()) {
                 lastName = lastName1;
             }
 
