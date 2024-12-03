@@ -130,7 +130,12 @@ public class YellowBook {
                 System.out.println("Enter first name: ");
                 String firstName = scanner.nextLine();
                 searchResult = search.searchByFirstName(firstName);
-                System.out.println(searchResult.toString());
+
+                if (searchResult == null || searchResult.isEmpty()) {
+                    System.out.println("No results found.");
+                } else {
+                    System.out.println(searchResult.toString());
+                }
                 break;
             }
 
@@ -138,15 +143,25 @@ public class YellowBook {
                 System.out.println("Enter last name : ");
                 String lastName = scanner.nextLine();
                 Person lastNameSearchResult = search.searchByLastName(lastName);
-                System.out.println(lastNameSearchResult.toString());
+                if (lastNameSearchResult == null) {
+                    System.out.println("No results found.");
+                } else {
+                    System.out.println(lastNameSearchResult.toString());
+                }
                 break;
+
             }
 
             case 3: {
                 System.out.println("Enter street name : ");
                 String streetName = scanner.nextLine();
                 List<Person> streetNameSearchResult = search.searchByStreetName(streetName);
-                System.out.println(streetNameSearchResult.toString());
+                if (streetNameSearchResult == null || streetNameSearchResult.isEmpty()) {
+                    System.out.println("No results found.");
+                } else {
+                    System.out.println(streetNameSearchResult.toString());
+                }
+
                 break;
             }
 
@@ -154,7 +169,12 @@ public class YellowBook {
                 System.out.println("Free search: : ");
                 String query = scanner.nextLine();
                 List<Person> freeSearchResult = search.freeSearch(query);
-                System.out.println(freeSearchResult.toString());
+                if (freeSearchResult == null || freeSearchResult.isEmpty()) {
+                    System.out.println("No results found.");
+                } else {
+                    System.out.println(freeSearchResult.toString());
+                }
+
                 break;
             }
 
