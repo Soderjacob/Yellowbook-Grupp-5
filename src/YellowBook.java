@@ -43,6 +43,9 @@ public class YellowBook {
 
         boolean showMenuLoop = true;
         while (showMenuLoop) {
+
+            Integer userMenuChoice = null;
+
             //Visible menu
             System.out.println("----Menu----");
             System.out.println("1: Search");
@@ -52,9 +55,13 @@ public class YellowBook {
                 System.out.println("4: Edit person");
                 System.out.println("5: Display all persons");
             }
-
-            Integer userMenuChoice = scanner.nextInt();
-
+            while (true) {
+                try {
+                    userMenuChoice = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                }
+            }
 
             switch (userMenuChoice) {
                 case 1: {
