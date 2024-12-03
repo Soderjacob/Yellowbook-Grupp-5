@@ -17,6 +17,18 @@ public class Person {
                 ", Address: " + address.toString();
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
     public Person(String firstName, String lastName, Integer age, String[] phoneNumbers, Address address) {
         this.firstName = firstName;
         this.lastName = lastName;
