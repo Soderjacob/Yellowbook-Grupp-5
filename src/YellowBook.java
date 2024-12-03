@@ -1,14 +1,18 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class YellowBook {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         //Admins login password
         Integer adminsPassword = 1337;
         //Example persons
-        ArrayList<Person> examplePersons = generateExamplePersons();
+
+        // ArrayList<Person> examplePersons = generateExamplePersons();
+
+        ArrayList<Person> examplePersons = readFromFile();
 
         //create admin
         AdminRights admin = new AdminRights(examplePersons);
@@ -43,6 +47,7 @@ public class YellowBook {
 
         boolean showMenuLoop = true;
         while (showMenuLoop) {
+            Integer userMenuChoice = null;
             //Visible menu
             System.out.println("----Menu----");
             System.out.println("1: Search");
@@ -50,11 +55,18 @@ public class YellowBook {
             if (userIsAdmin) {
                 System.out.println("3: Add person");
                 System.out.println("4: Edit person");
-                System.out.println("5: Display all persons");
-                System.out.println("6: Remove person");
+                System.out.println("5: Remove person");
+                System.out.println("6: Display all persons");
+                System.out.println("7: Display removed persons");
+                System.out.println("8: Display modified persons");
             }
-
-            Integer userMenuChoice = scanner.nextInt();
+            while (true) {
+                try {
+                    userMenuChoice = Integer.parseInt(scanner.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                }
+            }
 
 
             switch (userMenuChoice) {
@@ -83,7 +95,7 @@ public class YellowBook {
                 }
                 case 4: {
                     if (userIsAdmin) {
-                                                             //  function edit person
+                        //  function edit person
                         admin.displayContacts();
 
 
@@ -109,19 +121,10 @@ public class YellowBook {
                     }
                     break;
                 }
+
                 case 5: {
                     if (userIsAdmin) {
-                        //function display all
-                        admin.displayContacts();
-                    } else {
-                        System.out.println("Something went wrong.");
-                    }
-                    break;
-                }
-
-                case 6: {
-                    if (userIsAdmin) {
-                                                        //  function Remove person
+                        //  function Remove person
 
                         admin.displayContacts();
 
@@ -144,15 +147,47 @@ public class YellowBook {
                                 String okToRemove = scanner.next();
 
                                 if (okToRemove.toLowerCase().startsWith("y")) {
-
                                     admin.removeContact(personId - 1);
-
                                     yesNo = false;
                                 } else if (okToRemove.toLowerCase().startsWith("n")) {
                                     yesNo = false;
                                 }
                             }
                         } while (yesNo);
+
+                    } else {
+                        System.out.println("Something went wrong.");
+                    }
+                    break;
+                }
+
+                case 6: {
+                    if (userIsAdmin) {
+                        //function display all
+                        admin.addToFile();
+
+                        admin.displayContacts();
+                    } else {
+                        System.out.println("Something went wrong.");
+                    }
+                    break;
+                }
+
+                case 7: {
+                    if (userIsAdmin) {
+                        // function display Deleted Contacts
+                        readDeletedFile();
+
+                    } else {
+                        System.out.println("Something went wrong.");
+                    }
+                    break;
+                }
+
+                case 8: {
+                    if (userIsAdmin) {
+                        // function display Modified Contacts
+                        readModifiedFile();
 
                     } else {
                         System.out.println("Something went wrong.");
@@ -211,59 +246,168 @@ public class YellowBook {
         }
     }
 
-    public static ArrayList<Person> generateExamplePersons() {
-        //Example persons
+
+    // +++++++++++++++ Read from file and build arrays ++++++++++++++++++++++++++++++++++++++
+
+
+    public static ArrayList<Person> readFromFile() throws IOException {
+        ArrayList<String> example = new ArrayList<>();
         ArrayList<Person> examplePersons = new ArrayList<Person>();
+        File file = new File("Contacts.txt");
 
-        Address address1 = new Address("Storvägen 13", "Uppsala", "75644", "6798");
-        Address address2 = new Address("Lillgatan 3", "Stockholm", "12345", "8390");
-        Address address3 = new Address("Götgatan 118", "Jönköping", "54321", "3385");
-        Address address4 = new Address("Pinngatan", "Umeå", "11337", "5687");
-        Address address5 = new Address("Leafstreet", "London", "87878", "2295");
-        Person person1 = new Person(
-                "Tratt",
-                "Trattson",
-                45,
-                new String[]{"0701234567"},
-                address1
-        );
-        Person person2 = new Person(
-                "Olof",
-                "Palme",
-                45,
-                new String[]{"07099889"},
-                address2
-        );
-        Person person3 = new Person(
-                "Margareta",
-                "Andersson",
-                45,
-                new String[]{"070444455"},
-                address3
-        );
-        Person person4 = new Person(
-                "Johnny",
-                "Depp",
-                45,
-                new String[]{"07011122"},
-                address4
-        );
-        Person person5 = new Person(
-                "Morgan",
-                "Alling",
-                45,
-                new String[]{"072133737"},
-                address5
-        );
+        Scanner scan = new Scanner(file);
+        while (scan.hasNextLine()) {
+            example.add(scan.nextLine());
+        }
 
+        String FirstName = "";
+        String LastName = "";
+        String Age = "";
+        String PhoneNumber = "";
+        String StreetName = "";
+        String City = "";
+        String PostalCode = "";
+        String Doorcode = "";
 
-        examplePersons.add(person1);
-        examplePersons.add(person2);
-        examplePersons.add(person3);
-        examplePersons.add(person4);
-        examplePersons.add(person5);
+        for (String s : example) {
 
+            int a = (s.indexOf("First Name") + 13);
+            int b = (s.indexOf("Last Name") - 3);
+            for (int j = a; j < b; j++) {
+                FirstName += (s.charAt(j));
+            }
+
+            a = (s.indexOf("Last Name") + 12);
+            b = (s.indexOf("Age") - 3);
+            for (int j = a; j < b; j++) {
+                LastName += (s.charAt(j));
+            }
+
+            a = (s.indexOf("Age") + 5);
+            b = (s.indexOf("Phone Number") - 2);
+            for (int j = a; j < b; j++) {
+                Age += (s.charAt(j));
+            }
+
+            a = (s.indexOf("Phone Number") + 15);
+            b = (s.indexOf("Address") - 3);
+            for (int j = a; j < b; j++) {
+                PhoneNumber += (s.charAt(j));
+            }
+
+            a = (s.indexOf("Street Name") + 14);
+            b = (s.indexOf("City") - 3);
+            for (int j = a; j < b; j++) {
+                StreetName += (s.charAt(j));
+            }
+
+            a = (s.indexOf("City") + 7);
+            b = (s.indexOf("Postal Code") - 3);
+            for (int j = a; j < b; j++) {
+                City += (s.charAt(j));
+            }
+
+            a = (s.indexOf("Postal Code") + 14);
+            b = (s.indexOf("Door Code") - 3);
+            for (int j = a; j < b; j++) {
+                PostalCode += (s.charAt(j));
+            }
+
+            a = (s.indexOf("Door Code") + 12);
+            b = (s.length() - 1);
+            for (int j = a; j < b; j++) {
+                Doorcode += (s.charAt(j));
+            }
+
+            examplePersons.add(new Person(FirstName, LastName, Integer.valueOf(Age), new String[]{PhoneNumber}, new Address(StreetName, City, PostalCode, Doorcode)));
+            System.out.println();
+            FirstName = "";
+            LastName = "";
+            Age = "";
+            PhoneNumber = "";
+            StreetName = "";
+            City = "";
+            PostalCode = "";
+            Doorcode = "";
+
+        }
         return examplePersons;
     }
 
+
+//    public static ArrayList<Person> generateExamplePersons() {
+//        //Example persons
+//        ArrayList<Person> examplePersons = new ArrayList<Person>();
+//
+//        Address address1 = new Address("Storvägen 13", "Uppsala", "75644", "6798");
+//        Address address2 = new Address("Lillgatan 3", "Stockholm", "12345", "8390");
+//        Address address3 = new Address("Götgatan 118", "Jönköping", "54321", "3385");
+//        Address address4 = new Address("Pinngatan", "Umeå", "11337", "5687");
+//        Address address5 = new Address("Leafstreet", "London", "87878", "2295");
+//        Person person1 = new Person(
+//                "Tratt",
+//                "Trattson",
+//                45,
+//                new String[]{"0701234567"},
+//                address1
+//        );
+//        Person person2 = new Person(
+//                "Olof",
+//                "Palme",
+//                45,
+//                new String[]{"07099889"},
+//                address2
+//        );
+//        Person person3 = new Person(
+//                "Margareta",
+//                "Andersson",
+//                45,
+//                new String[]{"070444455"},
+//                address3
+//        );
+//        Person person4 = new Person(
+//                "Johnny",
+//                "Depp",
+//                45,
+//                new String[]{"07011122"},
+//                address4
+//        );
+//        Person person5 = new Person(
+//                "Morgan",
+//                "Alling",
+//                45,
+//                new String[]{"072133737"},
+//                address5
+//        );
+//
+//
+//        examplePersons.add(person1);
+//        examplePersons.add(person2);
+//        examplePersons.add(person3);
+//        examplePersons.add(person4);
+//        examplePersons.add(person5);
+//
+//        return examplePersons;
+//    }
+
+
+    public static void readDeletedFile() throws IOException {
+
+        File file = new File("RemovedContacts.txt");
+
+        Scanner scan = new Scanner(file);
+        while (scan.hasNextLine()) {
+            System.out.println((scan.nextLine()));
+        }
+    }
+
+    public static void readModifiedFile() throws IOException {
+
+        File file = new File("ModifiedContacts.txt");
+
+        Scanner scan = new Scanner(file);
+        while (scan.hasNextLine()) {
+            System.out.println((scan.nextLine()));
+        }
+    }
 }

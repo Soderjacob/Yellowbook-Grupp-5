@@ -1,3 +1,8 @@
+import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,7 +30,9 @@ public class AdminRights {
     // *************  Edit contact  *****************
     // If the user presses the Enter key without typing anything, the program keeps the previous value.
 
-    public void editContact(int index, Person newPerson) {
+    public void editContact(int index, Person newPerson) throws IOException {
+
+        String OldModified = String.valueOf(newPerson);
         Scanner scanner = new Scanner(System.in);
         if (index >= 0 && index < contacts.size()) {
 
@@ -94,6 +101,9 @@ public class AdminRights {
             Person person = new Person(firstName, lastName, age, phoneNumbers, address);
 
             contacts.set(index, person);
+            String NewModified= String.valueOf(contacts.set(index, person));
+            addToEditFile(OldModified,NewModified);
+            addToFile();
         } else {
             System.out.println("Ogiltigt index!");
         }
@@ -101,22 +111,29 @@ public class AdminRights {
 
     // *************  Remove contact  *****************
 
-    public void removeContact(int index) {
+    public void removeContact(int index) throws IOException {
         if (index >= 0 && index < contacts.size()) {
+
+            addToRemovedFile(index);
             contacts.remove(index);
+            addToFile();
         } else {
             System.out.println("Ogiltigt index!");
         }
     }
 
 
-    public void displayContacts() {
+    public void displayContacts() throws IOException {
+        int i=1;
         for (Person person : contacts) {
-            System.out.println(person.toString());
+            System.out.println(
+                    i + " -" + person.toString());
+            i++;
         }
+        addToFile();
     }
 
-    public void addNewPerson() {
+    public void addNewPerson() throws IOException {
         //ArrayList<Person> examplePersons = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -157,12 +174,13 @@ public class AdminRights {
         Address address = new Address(street, city, postalCode, doorCode);
         Person person = new Person(firstName, lastName, age, phoneNumbers, address);
         contacts.add(person);
+        addToFile();
         //}
 
         //return examplePersons;
     }
 
-    public void adminFunction() {
+    public void adminFunction() throws IOException {
 
         addNewPerson();
         return;
@@ -182,9 +200,46 @@ public class AdminRights {
          */
     }
 
-    private static void displayPersons(AdminRights admin) {
+    private static void displayPersons(AdminRights admin) throws IOException {
         // Visa alla kontakter
         admin.displayContacts();
     }
+
+
+    public void addToFile() throws IOException {
+        FileWriter fr =new FileWriter("Contacts.txt");
+        PrintWriter pr =new PrintWriter(fr,true);
+
+        for (Person person : contacts) {
+            pr.println(person.toString());
+        }
+        pr.close();
+    }
+
+    public void addToRemovedFile(int index) throws IOException {
+        FileWriter fr =new FileWriter("RemovedContacts.txt",true);
+        PrintWriter pr =new PrintWriter(fr,true);
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        pr.println(" Deleted by admin on " + dtf.format(now) ) ;
+        pr.println(contacts.get(index));
+        pr.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------") ;
+        pr.close();
+    }
+
+    public void addToEditFile(String oldPer,String newPer) throws IOException {
+        FileWriter fr =new FileWriter("ModifiedContacts.txt",true);
+        PrintWriter pr =new PrintWriter(fr,true);
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        pr.println(" Deleted by admin on " + dtf.format(now) ) ;
+        pr.println("( Old file ) " + oldPer);
+        pr.println("( New file ) " + newPer);
+        pr.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------") ;
+        pr.close();
+    }
+
 
 }
