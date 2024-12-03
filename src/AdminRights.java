@@ -99,6 +99,7 @@ public class AdminRights {
         }
     }
 
+    // *************  Remove contact  *****************
 
     public void removeContact(int index) {
         if (index >= 0 && index < contacts.size()) {
@@ -107,6 +108,7 @@ public class AdminRights {
             System.out.println("Ogiltigt index!");
         }
     }
+
 
     public void displayContacts() {
         for (Person person : contacts) {

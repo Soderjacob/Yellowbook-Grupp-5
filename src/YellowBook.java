@@ -51,6 +51,7 @@ public class YellowBook {
                 System.out.println("3: Add person");
                 System.out.println("4: Edit person");
                 System.out.println("5: Display all persons");
+                System.out.println("6: Remove person");
             }
 
             Integer userMenuChoice = scanner.nextInt();
@@ -82,11 +83,18 @@ public class YellowBook {
                 }
                 case 4: {
                     if (userIsAdmin) {
-                        //function edit person
+                                                             //  function edit person
                         admin.displayContacts();
 
+
                         System.out.println("--------------------------------------------------------------------------");
-                        System.out.print("Input Person ID to edit his information ( 1 to " + admin.getContacts().size() + " ). Otherwise go to main menu :");
+                        if (admin.getContacts().isEmpty()) {
+                            System.out.println("--------- There is no contacts to edit ---------");
+                            break;
+                        } else {
+                            System.out.print("Input Person ID to edit his information ( 1 to " + admin.getContacts().size() + " ). Otherwise go to main menu :");
+                        }
+
                         Integer personId = scanner.nextInt();
 
                         if (personId <= admin.getContacts().size()) {
@@ -110,6 +118,48 @@ public class YellowBook {
                     }
                     break;
                 }
+
+                case 6: {
+                    if (userIsAdmin) {
+                                                        //  function Remove person
+
+                        admin.displayContacts();
+
+                        System.out.println("--------------------------------------------------------------------------");
+                        if (admin.getContacts().isEmpty()) {
+                            System.out.println("--------- There is no contacts to delete ---------");
+                            break;
+                        } else {
+                            System.out.print("Input contact ID to delete ( 1 to " + admin.getContacts().size() + " ). Otherwise go to main menu :");
+                        }
+                        Integer personId = scanner.nextInt();
+                        boolean yesNo = true;
+
+                        do {
+
+                            if (personId <= admin.getContacts().size()) {
+                                System.out.println("--------------------------------------------------------------------------");
+                                System.out.println(admin.getContacts().get(personId - 1));
+                                System.out.println("Are you sure to delete ( Yes/No ) :");
+                                String okToRemove = scanner.next();
+
+                                if (okToRemove.toLowerCase().startsWith("y")) {
+
+                                    admin.removeContact(personId - 1);
+
+                                    yesNo = false;
+                                } else if (okToRemove.toLowerCase().startsWith("n")) {
+                                    yesNo = false;
+                                }
+                            }
+                        } while (yesNo);
+
+                    } else {
+                        System.out.println("Something went wrong.");
+                    }
+                    break;
+                }
+
 
             }
         }
