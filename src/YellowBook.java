@@ -1,4 +1,5 @@
 import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -67,7 +68,6 @@ public class YellowBook {
                 } catch (NumberFormatException e) {
                 }
             }
-
 
             switch (userMenuChoice) {
                 case 1: {
@@ -147,7 +147,9 @@ public class YellowBook {
                                 String okToRemove = scanner.next();
 
                                 if (okToRemove.toLowerCase().startsWith("y")) {
+
                                     admin.removeContact(personId - 1);
+
                                     yesNo = false;
                                 } else if (okToRemove.toLowerCase().startsWith("n")) {
                                     yesNo = false;
@@ -202,45 +204,78 @@ public class YellowBook {
 
     private static void searchDialog(Scanner scanner, Search search) {
         //SearchFunction
-        System.out.println("1. Search by first name");
-        System.out.println("2. Search by last name");
-        System.out.println("3. Search by street name");
-        System.out.println("4. Free search");
-        Integer searchMenuChoice = scanner.nextInt();
-        scanner.nextLine();
+        boolean validInput = false;
+        int searchMenuChoice = 0;
 
-        switch (searchMenuChoice) {
-            case 1: {
-                List<Person> searchResult;
-                System.out.println("Enter first name: ");
-                String firstName = scanner.nextLine();
-                searchResult = search.searchByFirstName(firstName);
-                System.out.println(searchResult.toString());
-                break;
+        while (!validInput){
+
+            System.out.println("1. Search by first name");
+            System.out.println("2. Search by last name");
+            System.out.println("3. Search by street name");
+            System.out.println("4. Free search");
+
+            if (scanner.hasNextInt()) {
+                searchMenuChoice = scanner.nextInt();
+                validInput = true;
+            } else {
+                System.out.println("Invalid input. Please try a number again.");
+                scanner.next();
             }
+            scanner.nextLine();
 
-            case 2: {
-                System.out.println("Enter last name : ");
-                String lastName = scanner.nextLine();
-                Person lastNameSearchResult = search.searchByLastName(lastName);
-                System.out.println(lastNameSearchResult.toString());
-                break;
-            }
+            switch (searchMenuChoice) {
+                case 1: {
+                    List<Person> searchResult;
+                    System.out.println("Enter first name: ");
+                    String firstName = scanner.nextLine();
+                    searchResult = search.searchByFirstName(firstName);
 
-            case 3: {
-                System.out.println("Enter street name : ");
-                String streetName = scanner.nextLine();
-                List<Person> streetNameSearchResult = search.searchByStreetName(streetName);
-                System.out.println(streetNameSearchResult.toString());
-                break;
-            }
+                    if (searchResult == null || searchResult.isEmpty()) {
+                        System.out.println("No results found.");
+                    } else {
+                        System.out.println(searchResult.toString());
+                    }
+                    break;
+                }
 
-            case 4: {
-                System.out.println("Free search: : ");
-                String query = scanner.nextLine();
-                List<Person> freeSearchResult = search.freeSearch(query);
-                System.out.println(freeSearchResult.toString());
-                break;
+                case 2: {
+                    System.out.println("Enter last name : ");
+                    String lastName = scanner.nextLine();
+                    Person lastNameSearchResult = search.searchByLastName(lastName);
+                    if (lastNameSearchResult == null) {
+                        System.out.println("No results found.");
+                    } else {
+                        System.out.println(lastNameSearchResult.toString());
+                    }
+                    break;
+
+                }
+
+                case 3: {
+                    System.out.println("Enter street name : ");
+                    String streetName = scanner.nextLine();
+                    List<Person> streetNameSearchResult = search.searchByStreetName(streetName);
+                    if (streetNameSearchResult == null || streetNameSearchResult.isEmpty()) {
+                        System.out.println("No results found.");
+                    } else {
+                        System.out.println(streetNameSearchResult.toString());
+                    }
+
+                    break;
+                }
+
+                case 4: {
+                    System.out.println("Free search: : ");
+                    String query = scanner.nextLine();
+                    List<Person> freeSearchResult = search.freeSearch(query);
+                    if (freeSearchResult == null || freeSearchResult.isEmpty()) {
+                        System.out.println("No results found.");
+                    } else {
+                        System.out.println(freeSearchResult.toString());
+                    }
+
+                    break;
+                }
             }
 
         }
