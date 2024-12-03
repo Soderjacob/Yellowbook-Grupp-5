@@ -40,7 +40,7 @@ public class YellowBook {
 
 
         boolean showMenuLoop = true;
-        while(showMenuLoop) {
+        while (showMenuLoop) {
             //Visible menu
             System.out.println("----Menu----");
             System.out.println("1: Search");
@@ -81,6 +81,18 @@ public class YellowBook {
                 case 4: {
                     if (userIsAdmin) {
                         //function edit person
+                        admin.displayContacts();
+
+                        System.out.println("--------------------------------------------------------------------------");
+                        System.out.print("Input Person ID to edit his information ( 1 to " + admin.getContacts().size() + " ). Otherwise go to main menu :");
+                        Integer personId = scanner.nextInt();
+
+                        if (personId <= admin.getContacts().size()) {
+                            System.out.println("--------------------------------------------------------------------------");
+                            System.out.println(admin.getContacts().get(personId - 1));
+
+                            admin.editContact(personId - 1, admin.getContacts().get(personId - 1));
+                        }
 
                     } else {
                         System.out.println("Something went wrong.");
@@ -100,59 +112,60 @@ public class YellowBook {
             }
         }
     }
-        public static ArrayList<Person> generateExamplePersons () {
-            //Example persons
-            ArrayList<Person> examplePersons = new ArrayList<Person>();
 
-            Address address1 = new Address("Storvägen 13", "Uppsala", "75644", "6798");
-            Address address2 = new Address("Lillgatan 3", "Stockholm", "12345", "8390");
-            Address address3 = new Address("Götgatan 118", "Jönköping", "54321", "3385");
-            Address address4 = new Address("Pinngatan", "Umeå", "11337", "5687");
-            Address address5 = new Address("Leafstreet", "London", "87878", "2295");
-            Person person1 = new Person(
-                    "Tratt",
-                    "Trattson",
-                    45,
-                    new String[]{"0701234567"},
-                    address1
-            );
-            Person person2 = new Person(
-                    "Olof",
-                    "Palme",
-                    45,
-                    new String[]{"07099889"},
-                    address2
-            );
-            Person person3 = new Person(
-                    "Margareta",
-                    "Andersson",
-                    45,
-                    new String[]{"070444455"},
-                    address3
-            );
-            Person person4 = new Person(
-                    "Johnny",
-                    "Depp",
-                    45,
-                    new String[]{"07011122"},
-                    address4
-            );
-            Person person5 = new Person(
-                    "Morgan",
-                    "Alling",
-                    45,
-                    new String[]{"072133737"},
-                    address5
-            );
+    public static ArrayList<Person> generateExamplePersons() {
+        //Example persons
+        ArrayList<Person> examplePersons = new ArrayList<Person>();
+
+        Address address1 = new Address("Storvägen 13", "Uppsala", "75644", "6798");
+        Address address2 = new Address("Lillgatan 3", "Stockholm", "12345", "8390");
+        Address address3 = new Address("Götgatan 118", "Jönköping", "54321", "3385");
+        Address address4 = new Address("Pinngatan", "Umeå", "11337", "5687");
+        Address address5 = new Address("Leafstreet", "London", "87878", "2295");
+        Person person1 = new Person(
+                "Tratt",
+                "Trattson",
+                45,
+                new String[]{"0701234567"},
+                address1
+        );
+        Person person2 = new Person(
+                "Olof",
+                "Palme",
+                45,
+                new String[]{"07099889"},
+                address2
+        );
+        Person person3 = new Person(
+                "Margareta",
+                "Andersson",
+                45,
+                new String[]{"070444455"},
+                address3
+        );
+        Person person4 = new Person(
+                "Johnny",
+                "Depp",
+                45,
+                new String[]{"07011122"},
+                address4
+        );
+        Person person5 = new Person(
+                "Morgan",
+                "Alling",
+                45,
+                new String[]{"072133737"},
+                address5
+        );
 
 
-            examplePersons.add(person1);
-            examplePersons.add(person2);
-            examplePersons.add(person3);
-            examplePersons.add(person4);
-            examplePersons.add(person5);
+        examplePersons.add(person1);
+        examplePersons.add(person2);
+        examplePersons.add(person3);
+        examplePersons.add(person4);
+        examplePersons.add(person5);
 
-            return examplePersons;
-        }
+        return examplePersons;
+    }
 
 }
