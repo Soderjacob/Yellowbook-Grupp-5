@@ -11,7 +11,7 @@ public class YellowBook {
         Integer adminsPassword = 1337;
         //Example persons
 
-        // ArrayList<Person> examplePersons = generateExamplePersons();
+        //ArrayList<Person> examplePersons = generateExamplePersons();
 
         ArrayList<Person> examplePersons = readFromFile();
 

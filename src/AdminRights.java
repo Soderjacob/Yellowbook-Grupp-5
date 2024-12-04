@@ -234,7 +234,7 @@ public class AdminRights {
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        pr.println(" Deleted by admin on " + dtf.format(now) ) ;
+        pr.println(" Modified by admin on " + dtf.format(now) ) ;
         pr.println("( Old file ) " + oldPer);
         pr.println("( New file ) " + newPer);
         pr.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------") ;
