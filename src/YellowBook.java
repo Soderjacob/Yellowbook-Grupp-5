@@ -53,6 +53,7 @@ public class YellowBook {
             System.out.println("----Menu----");
             System.out.println("1: Search");
             System.out.println("2: Quit");
+            System.out.println("Input the corresponding number to the function you wish to use: ");
             if (userIsAdmin) {
                 System.out.println("3: Add person");
                 System.out.println("4: Edit person");
@@ -60,6 +61,7 @@ public class YellowBook {
                 System.out.println("6: Display all persons");
                 System.out.println("7: Display removed persons");
                 System.out.println("8: Display modified persons");
+                System.out.println("Input the corresponding number to the function you wish to use: ");
             }
             while (true) {
                 try {

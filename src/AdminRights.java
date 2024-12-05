@@ -161,7 +161,7 @@ public class AdminRights {
     }
 
     public void addToFile() throws IOException {
-        FileWriter fr =new FileWriter("/src/Contacts.txt");
+        FileWriter fr =new FileWriter("Contacts.txt");
         PrintWriter pr =new PrintWriter(fr,true);
 
         for (Person person : contacts) {
