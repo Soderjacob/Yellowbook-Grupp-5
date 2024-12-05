@@ -233,7 +233,10 @@ public class YellowBook {
                     if (searchResult == null || searchResult.isEmpty()) {
                         System.out.println("No results found.");
                     } else {
-                        System.out.println(searchResult.toString());
+                        for (var Result : searchResult){
+                            System.out.println(Result);
+                            System.out.println();
+                        }
                     }
                     break;
                 }
@@ -258,7 +261,10 @@ public class YellowBook {
                     if (streetNameSearchResult == null || streetNameSearchResult.isEmpty()) {
                         System.out.println("No results found.");
                     } else {
-                        System.out.println(streetNameSearchResult.toString());
+                        for (var Result : streetNameSearchResult){
+                            System.out.println(Result);
+                            System.out.println();
+                        }
                     }
 
                     break;
@@ -271,7 +277,10 @@ public class YellowBook {
                     if (freeSearchResult == null || freeSearchResult.isEmpty()) {
                         System.out.println("No results found.");
                     } else {
-                        System.out.println(freeSearchResult.toString());
+                        for (var Result : freeSearchResult){
+                            System.out.println(Result);
+                            System.out.println();
+                        }
                     }
 
                     break;

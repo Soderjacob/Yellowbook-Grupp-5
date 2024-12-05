@@ -1,5 +1,4 @@
- Person First Name: 'Ali', Last Name: 'Asheer', Age: 15, Phone Number: [07099889], Address: Street Name: 'Lillgatan 3', City: 'Stockholm', Postal Code: '12345', Door Code: '8390'
- Person First Name: 'Margareta', Last Name: 'Andersson', Age: 44, Phone Number: [070444455], Address: Street Name: 'Götgatan 118', City: 'Jönköping', Postal Code: '54321', Door Code: '3385'
+ Person First Name: 'marran', Last Name: 'Andersson', Age: 44, Phone Number: [070444455], Address: Street Name: 'Götgatan 118', City: 'Jönköping', Postal Code: '54321', Door Code: '3385'
  Person First Name: 'Johnny', Last Name: 'Depp', Age: 45, Phone Number: [07011122,07078822], Address: Street Name: 'inngatan', City: 'Umeå', Postal Code: '11337', Door Code: '5687'
  Person First Name: 'Olof', Last Name: 'Palme', Age: 15, Phone Number: [07099889], Address: Street Name: 'Lillgatan 3', City: 'Stockholm', Postal Code: '12345', Door Code: '8390'
  Person First Name: 'Eric', Last Name: 'Asheer', Age: 55, Phone Number: [07011122,07078822], Address: Street Name: 'inngatan', City: 'Umeå', Postal Code: '3333', Door Code: '32'
