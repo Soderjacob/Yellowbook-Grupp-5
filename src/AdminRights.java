@@ -160,29 +160,8 @@ public class AdminRights {
 
     }
 
-    public void adminFunction() throws IOException {
-
-        addNewPerson();
-        return;
-
-        // displayPersons(admin);
-
-        // Redigera en befintlig kontakt
-        // Person editedPerson = new Person("Tratt", "Trattson", 50, new String[] {"0707654321"}, newAddress);
-        // editContact(0, editedPerson);
-
-        // Ta bort en kontakt
-        // removeContact(1);
-
-        /* Visa uppdaterade kontakter
-        displayPersons(admin);
-
-         */
-    }
-
-
     public void addToFile() throws IOException {
-        FileWriter fr =new FileWriter("Contacts.txt");
+        FileWriter fr =new FileWriter("/src/Contacts.txt");
         PrintWriter pr =new PrintWriter(fr,true);
 
         for (Person person : contacts) {
@@ -215,6 +194,5 @@ public class AdminRights {
         pr.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------") ;
         pr.close();
     }
-
 
 }
