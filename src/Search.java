@@ -40,11 +40,11 @@ public class Search  {
     public List<Person> freeSearch(String query) {
         List<Person> results = new ArrayList<>();
         for (Person person : contacts) {
-            if (person.getFirstName().equalsIgnoreCase(query) ||
-                    person.getLastName().equalsIgnoreCase(query) ||
-                    person.getAddress().StreetName.equalsIgnoreCase(query) ||
-                    person.getAddress().city.equalsIgnoreCase(query) ||
-                    person.getAddress().postalCode.equalsIgnoreCase(query)) {
+            if (person.getFirstName().toLowerCase().contains(query.toLowerCase()) ||
+                    person.getLastName().toLowerCase().contains(query.toLowerCase()) ||
+                    person.getAddress().StreetName.toLowerCase().contains(query.toLowerCase()) ||
+                    person.getAddress().city.toLowerCase().contains(query.toLowerCase()) ||
+                    person.getAddress().postalCode.toLowerCase().contains(query.toLowerCase())) {
                 results.add(person);
             }
         }
