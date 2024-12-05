@@ -46,7 +46,7 @@ Administratör
 
 
 
-## License
 
+---
 © 2024 Grupp 5
 
