@@ -37,6 +37,10 @@ Gästanvändare
  ⦁ Förmåga att söka efter profiler givet beskrivningen av sökbarhet.
  ⦁ Förmåga att avsluta programmet genom att skriva “quit” i konsolen.
 
+ - Ensure `Allow implicit grant` is set under your OAuth2 settings
+- Ensure Redirect URI` is set under your OAuth2 settings to point to your Dillinger instance
+- Ensure `app_key` and `app_secret` are present in your config and that the URLs are updated to the new endpoints
+
 Administratör
  ⦁ Förmåga att lägga till kontaktinformation om en profil med egenskaperna som beskrivs under kontaktinformation.
  ⦁ Förmåga att ta bort kontaktinformation för någon tillagd profil.
