@@ -18,14 +18,6 @@ public class AdminRights {
         this.contacts = contacts;
     }
 
-    public AdminRights() {
-
-    }
-
-    public void addContact(Person person) {
-        this.contacts.add(person);
-    }
-
 
     // *************  Edit contact  *****************
     // If the user presses the Enter key without typing anything, the program keeps the previous value.
@@ -105,7 +97,7 @@ public class AdminRights {
             addToEditFile(OldModified,NewModified);
             addToFile();
         } else {
-            System.out.println("Ogiltigt index!");
+            System.out.println("Invalid input id!");
         }
     }
 
@@ -118,7 +110,7 @@ public class AdminRights {
             contacts.remove(index);
             addToFile();
         } else {
-            System.out.println("Ogiltigt index!");
+            System.out.println("Invalid input id!");
         }
     }
 
@@ -134,18 +126,8 @@ public class AdminRights {
     }
 
     public void addNewPerson() throws IOException {
-        //ArrayList<Person> examplePersons = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
-        /*
-
-        System.out.println("Hur många kontakter vill du lägga till?");
-        int numberOfContacts = scanner.nextInt();
-        scanner.nextLine(); // Konsumera den återstående nya raden
-
-         */
-
-        //for (int i = 0; i < numberOfContacts; i++) {
         System.out.println("Ange förnamn:");
         String firstName = scanner.nextLine();
 
@@ -175,39 +157,11 @@ public class AdminRights {
         Person person = new Person(firstName, lastName, age, phoneNumbers, address);
         contacts.add(person);
         addToFile();
-        //}
 
-        //return examplePersons;
     }
-
-    public void adminFunction() throws IOException {
-
-        addNewPerson();
-        return;
-
-        // displayPersons(admin);
-
-        // Redigera en befintlig kontakt
-        // Person editedPerson = new Person("Tratt", "Trattson", 50, new String[] {"0707654321"}, newAddress);
-        // editContact(0, editedPerson);
-
-        // Ta bort en kontakt
-        // removeContact(1);
-
-        /* Visa uppdaterade kontakter
-        displayPersons(admin);
-
-         */
-    }
-
-    private static void displayPersons(AdminRights admin) throws IOException {
-        // Visa alla kontakter
-        admin.displayContacts();
-    }
-
 
     public void addToFile() throws IOException {
-        FileWriter fr =new FileWriter("Contacts.txt");
+        FileWriter fr =new FileWriter("/src/Contacts.txt");
         PrintWriter pr =new PrintWriter(fr,true);
 
         for (Person person : contacts) {
@@ -240,6 +194,5 @@ public class AdminRights {
         pr.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------") ;
         pr.close();
     }
-
 
 }

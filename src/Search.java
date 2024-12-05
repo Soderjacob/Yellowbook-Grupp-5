@@ -8,10 +8,6 @@ public class Search  {
         this.contacts = contacts;
     }
 
-    public void addPerson(Person person) {
-        contacts.add(person);
-    }
-
     public List<Person> searchByFirstName(String firstName) {
         List<Person> results = new ArrayList<>();
         for (Person person : contacts) {
