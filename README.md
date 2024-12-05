@@ -7,15 +7,15 @@ Grupp 5:
 - Jacob Söder
 ```
 Beskrivning av programmet med krav Programmet är en telefonbok med sk CRUD-operationer:
- Create - att lägga till nya profiler i telefonboken
- Read - att söka efter profiler i telefonboken givet olika sökningar
- Update - att kunna uppdatera en profils kontaktuppgifter 
- Delete - att kunna ta bort en profil
+- Create - att lägga till nya profiler i telefonboken
+- Read - att söka efter profiler i telefonboken givet olika sökningar
+- Update - att kunna uppdatera en profils kontaktuppgifter 
+- Delete - att kunna ta bort en profil
 
-Olika användare 
+### Olika användare
 Default så är alla användare i systemet en gäst användare, men då inte alla ska kunna ta bort en användare så behöver användaren logga in som en administratör för att kunna ta bort andras profiler. Detta gäller även för uppdateringen av användarens kontaktinformation.
 
-Kontaktinformation
+### Kontaktinformation
 Varje profil i telefonboken ska ha egenskaperna:
  - förnamn
  - efternamn
@@ -30,7 +30,7 @@ Sökbarhet
  - Frisökning - ger alla profiler med någon relaterbar kontaktinformation.
  - Frisökning avser att söka över samtliga egenskaper. Exempelvis så kan sökningen Erik ge svar på förnamnet Erik, efternamn Eriksson samt adressen Eriksberg.
 
-Krav för uppgiften
+### Krav för uppgiften
  Ett konsolprogram som kan användas av två olika användarprofiler. Gästanvändare och administratör. De två användarprofilerna ska kunna utföra följande:
 
 Gästanvändare
