@@ -1,5 +1,5 @@
-Gruppuppgift: Den gula boken
-```js
+## _Gruppuppgift: Den gula boken_
+```C#
 Grupp 5: 
 - Anton Lindström
 - Ahmad Sameer Feroz
@@ -42,3 +42,11 @@ Administratör
  - Förmåga att ta bort kontaktinformation för någon tillagd profil.
  - Förmåga att uppdatera kontaktinformation för någon tillagd profil.
  - Samma övriga rättigheter som en gästanvändare.
+
+
+
+
+## License
+
+© 2024 Grupp 5
+
