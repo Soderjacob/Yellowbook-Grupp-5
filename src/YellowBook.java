@@ -6,13 +6,11 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class YellowBook {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException {
         //Admins login password
         Integer adminsPassword = 1337;
+
         //Example persons
-
-        //ArrayList<Person> examplePersons = generateExamplePersons();
-
         ArrayList<Person> examplePersons = readFromFile();
 
         //create admin
@@ -378,63 +376,6 @@ public class YellowBook {
         }
         return examplePersons;
     }
-
-
-//    public static ArrayList<Person> generateExamplePersons() {
-//        //Example persons
-//        ArrayList<Person> examplePersons = new ArrayList<Person>();
-//
-//        Address address1 = new Address("Storvägen 13", "Uppsala", "75644", "6798");
-//        Address address2 = new Address("Lillgatan 3", "Stockholm", "12345", "8390");
-//        Address address3 = new Address("Götgatan 118", "Jönköping", "54321", "3385");
-//        Address address4 = new Address("Pinngatan", "Umeå", "11337", "5687");
-//        Address address5 = new Address("Leafstreet", "London", "87878", "2295");
-//        Person person1 = new Person(
-//                "Tratt",
-//                "Trattson",
-//                45,
-//                new String[]{"0701234567"},
-//                address1
-//        );
-//        Person person2 = new Person(
-//                "Olof",
-//                "Palme",
-//                45,
-//                new String[]{"07099889"},
-//                address2
-//        );
-//        Person person3 = new Person(
-//                "Margareta",
-//                "Andersson",
-//                45,
-//                new String[]{"070444455"},
-//                address3
-//        );
-//        Person person4 = new Person(
-//                "Johnny",
-//                "Depp",
-//                45,
-//                new String[]{"07011122"},
-//                address4
-//        );
-//        Person person5 = new Person(
-//                "Morgan",
-//                "Alling",
-//                45,
-//                new String[]{"072133737"},
-//                address5
-//        );
-//
-//
-//        examplePersons.add(person1);
-//        examplePersons.add(person2);
-//        examplePersons.add(person3);
-//        examplePersons.add(person4);
-//        examplePersons.add(person5);
-//
-//        return examplePersons;
-//    }
-
 
     public static void readDeletedFile() throws IOException {
 
