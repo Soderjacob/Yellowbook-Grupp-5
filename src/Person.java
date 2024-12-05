@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Person {
+public class Person implements Serializable {
     String firstName;
     String lastName;
     Integer age;
@@ -8,12 +9,13 @@ public class Person {
     Address address;
 
     @Override
-    public String toString() {
-        return "Person" +
-                "FirstName: '" + firstName + '\'' +
-                ", LastName: '" + lastName + '\'' +
+    public String toString(){
+
+        return " Person" +
+                " First Name: '" + firstName + '\'' +
+                ", Last Name: '" + lastName + '\'' +
                 ", Age: " + age +
-                ", PhoneNumber: " + Arrays.toString(phoneNumbers) +
+                ", Phone Number: " + Arrays.toString(phoneNumbers) +
                 ", Address: " + address.toString();
     }
 

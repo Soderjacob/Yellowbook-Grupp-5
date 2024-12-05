@@ -1,4 +1,6 @@
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
     String StreetName;
     String city;
     String postalCode;
@@ -6,9 +8,9 @@ public class Address {
 
     @Override
     public String toString() {
-        return "StreetName: '" + StreetName + '\'' +
+        return "Street Name: '" + StreetName + '\'' +
                 ", City: '" + city + '\'' +
-                ", PostalCode: '" + postalCode + '\'' + ", Doorcode: '" + doorCode + '\'';
+                ", Postal Code: '" + postalCode + '\'' + ", Door Code: '" + doorCode + '\'';
     }
 
     public Address(String StreetName, String city, String postalCode, String doorCode) {

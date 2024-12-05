@@ -21,7 +21,7 @@ public class YellowBook {
 
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to yellowbook");
+        System.out.println("Welcome to Yellow Book");
 
         Boolean userIsAdmin = false;
         boolean loginToAdminLoop = true;
