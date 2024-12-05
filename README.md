@@ -1,7 +1,7 @@
 Gruppuppgift: Den gula boken
 
 Grupp 5: 
-⦁	Anton Lindström.
+⦁ Anton Lindström.
 ⦁	Ahmad Sameer Feroz.
 ⦁	Ali Asheer.
 ⦁	Jacob Söder.
