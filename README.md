@@ -1,10 +1,10 @@
 Gruppuppgift: Den gula boken
 ```js
 Grupp 5: 
-- Anton Lindström.
-- Ahmad Sameer Feroz.
-- Ali Asheer.
-- Jacob Söder.
+- Anton Lindström
+- Ahmad Sameer Feroz
+- Ali Asheer
+- Jacob Söder
 ```
 Beskrivning av programmet med krav Programmet är en telefonbok med sk CRUD-operationer:
  Create - att lägga till nya profiler i telefonboken
@@ -17,25 +17,25 @@ Default så är alla användare i systemet en gäst användare, men då inte all
 
 Kontaktinformation
 Varje profil i telefonboken ska ha egenskaperna:
- ⦁ förnamn
- ⦁ efternamn
- ⦁ ålder
- ⦁ adress (med stad, postkod, gatunamn, portnummer)
- ⦁ telefonummer (en profil kan ha flera telefonnummer)
+ - förnamn
+ - efternamn
+ - ålder
+ - adress (med stad, postkod, gatunamn, portnummer)
+ - telefonummer (en profil kan ha flera telefonnummer)
 
 Sökbarhet
- ⦁ Sökning på efternamn - ger profilen som först matchar med sökningen.
- ⦁ Sökning på adress - ger alla profiler på samma gatunamn.
- ⦁ Sökning på förnamn - ger alla profiler med det sökta förnamnet.
- ⦁ Frisökning - ger alla profiler med någon relaterbar kontaktinformation.
- Frisökning avser att söka över samtliga egenskaper. Exempelvis så kan sökningen Erik ge svar på förnamnet Erik, efternamn Eriksson samt adressen Eriksberg.
+ - Sökning på efternamn - ger profilen som först matchar med sökningen.
+ - Sökning på adress - ger alla profiler på samma gatunamn.
+ - Sökning på förnamn - ger alla profiler med det sökta förnamnet.
+ - Frisökning - ger alla profiler med någon relaterbar kontaktinformation.
+ - Frisökning avser att söka över samtliga egenskaper. Exempelvis så kan sökningen Erik ge svar på förnamnet Erik, efternamn Eriksson samt adressen Eriksberg.
 
 Krav för uppgiften
  Ett konsolprogram som kan användas av två olika användarprofiler. Gästanvändare och administratör. De två användarprofilerna ska kunna utföra följande:
 
 Gästanvändare
- ⦁ Förmåga att söka efter profiler givet beskrivningen av sökbarhet.
- ⦁ Förmåga att avsluta programmet genom att skriva “quit” i konsolen.
+ - Förmåga att söka efter profiler givet beskrivningen av sökbarhet.
+ - Förmåga att avsluta programmet genom att skriva “quit” i konsolen.
 
  - Ensure `Allow implicit grant` is set under your OAuth2 settings
 - Ensure Redirect URI` is set under your OAuth2 settings to point to your Dillinger instance
