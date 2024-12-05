@@ -51,6 +51,7 @@ public class YellowBook {
             Integer userMenuChoice = null;
             //Visible menu
             System.out.println("----Menu----");
+            System.out.println("Input the corresponding number to the function you wish to use: ");
             System.out.println("1: Search");
             System.out.println("2: Quit");
             if (userIsAdmin) {
