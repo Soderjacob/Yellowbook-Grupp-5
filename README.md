@@ -1,21 +1,11 @@
 Gruppuppgift: Den gula boken
-
+```js
 Grupp 5: 
 - Anton Lindström.
 - Ahmad Sameer Feroz.
 - Ali Asheer.
 - Jacob Söder.
-
-
-
-
-
-
-⦁ Anton Lindström.
-⦁ Ahmad Sameer Feroz.
-⦁ Ali Asheer.
-⦁ Jacob Söder.
-
+```
 Beskrivning av programmet med krav Programmet är en telefonbok med sk CRUD-operationer:
  Create - att lägga till nya profiler i telefonboken
  Read - att söka efter profiler i telefonboken givet olika sökningar
